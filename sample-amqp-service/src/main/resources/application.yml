@@ -12,6 +12,7 @@ sample:
     topicExchange: amq.topic
     queue: sample-queue
     routingKey: sample.routing.key.#
+    concurrent: 2
 logging:
   level:
     com.yosanai: DEBUG

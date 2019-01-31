@@ -6,11 +6,14 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
-import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.integration.amqp.inbound.AmqpInboundChannelAdapter;
+import org.springframework.integration.channel.DirectChannel;
+import org.springframework.messaging.MessageChannel;
 
 import com.yosanai.spring.starter.sampleapi.DefaultSampleAPI;
 import com.yosanai.spring.starter.sampleapi.SampleAPI;
@@ -22,10 +25,13 @@ public class SampleAMQPServiceApplication {
 	private String topicExchange;
 
 	@Value("${sample.amqpservice.queue}")
-	private String queue;
+	private String sampleQueue;
 
 	@Value("${sample.amqpservice.routingKey}")
 	private String routingKey;
+
+	@Value("${sample.amqpservice.concurrent}")
+	private int concurrent;
 
 	@Bean
 	public SampleAPI sampleAPI() {
@@ -33,8 +39,8 @@ public class SampleAMQPServiceApplication {
 	}
 
 	@Bean
-	Queue queue() {
-		return new Queue(queue, false);
+	Queue sampleQueue() {
+		return new Queue(sampleQueue, false);
 	}
 
 	@Bean
@@ -43,23 +49,29 @@ public class SampleAMQPServiceApplication {
 	}
 
 	@Bean
-	Binding binding(Queue queue, TopicExchange exchange) {
+	Binding sampleBinding(@Qualifier("sampleQueue") Queue queue, TopicExchange exchange) {
 		return BindingBuilder.bind(queue).to(exchange).with(routingKey);
 	}
 
 	@Bean
-	SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
-			MessageListenerAdapter listenerAdapter) {
-		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
-		container.setConnectionFactory(connectionFactory);
-		container.setQueueNames(queue);
-		container.setMessageListener(listenerAdapter);
+	SimpleMessageListenerContainer container(ConnectionFactory connectionFactory) {
+		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
+		container.setQueueNames(sampleQueue);
+		container.setConcurrentConsumers(concurrent);
 		return container;
 	}
 
 	@Bean
-	MessageListenerAdapter listenerAdapter(SampleRequestListener receiver) {
-		return new MessageListenerAdapter(receiver, "handleMessage");
+	public MessageChannel sampleReceiverChannel() {
+		return new DirectChannel();
+	}
+
+	@Bean
+	public AmqpInboundChannelAdapter inbound(SimpleMessageListenerContainer listenerContainer,
+			@Qualifier("sampleReceiverChannel") MessageChannel channel) {
+		AmqpInboundChannelAdapter adapter = new AmqpInboundChannelAdapter(listenerContainer);
+		adapter.setOutputChannel(channel);
+		return adapter;
 	}
 
 	public static void main(String[] args) {
