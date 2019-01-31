@@ -1,5 +1,6 @@
 # spring-starter
 [![Build Status](https://travis-ci.org/perusworld/spring-starter.svg?branch=master)](https://travis-ci.org/perusworld/spring-starter)
+[![codecov](https://codecov.io/gh/perusworld/spring-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/perusworld/spring-starter)
 
 Spring Starter
 
