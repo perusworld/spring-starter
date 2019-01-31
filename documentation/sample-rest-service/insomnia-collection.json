@@ -1,0 +1,106 @@
+{
+  "_type": "export",
+  "__export_format": 3,
+  "__export_date": "2019-01-31T01:14:52.108Z",
+  "__export_source": "restdocs-to-postman:v2.0.1",
+  "resources": [
+    {
+      "_type": "request_group",
+      "_id": "__FOLDER_1__",
+      "name": "Sample REST Service - Insomnia Sample Requests",
+      "parentId": "__WORKSPACE_ID__",
+      "metaSortKey": 0
+    },
+    {
+      "parentId": "__FOLDER_1__",
+      "name": "jpa/customers/",
+      "url": "{{host}}/jpa/customers/",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\r\n  \"firstName\" : \"firstName1\",\r\n  \"lastName\" : \"lastName1\",\r\n  \"sampleIgnoreInPublic\" : \"sampleIgnoreInPublic1\"\r\n}"
+      },
+      "method": "POST",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{oauth2Token}}"
+        }
+      ],
+      "authentication": {},
+      "_id": "__REQ_1__",
+      "_type": "request"
+    },
+    {
+      "parentId": "__FOLDER_1__",
+      "name": "jpa/customers/4",
+      "url": "{{host}}/jpa/customers/4",
+      "body": {},
+      "method": "GET",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{oauth2Token}}"
+        }
+      ],
+      "authentication": {},
+      "_id": "__REQ_2__",
+      "_type": "request"
+    },
+    {
+      "parentId": "__FOLDER_1__",
+      "name": "jpa/customers/",
+      "url": "{{host}}/jpa/customers/?page=0&size=2147483647",
+      "body": {},
+      "method": "GET",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{oauth2Token}}"
+        }
+      ],
+      "authentication": {},
+      "_id": "__REQ_3__",
+      "_type": "request"
+    },
+    {
+      "parentId": "__FOLDER_1__",
+      "name": "jpa/customers/search/findAllByLastName/lastName1",
+      "url": "{{host}}/jpa/customers/search/findAllByLastName/lastName1",
+      "body": {},
+      "method": "GET",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{oauth2Token}}"
+        }
+      ],
+      "authentication": {},
+      "_id": "__REQ_4__",
+      "_type": "request"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+= Sample REST Service
+Sample REST Service Documentation
+:toc: left
+:sectnums:
+
+[introduction]
+= Introduction
+
+[[resources]]
+= Resources
+
+[[resources-customer]]
+== Customer
+
+[[resource-jpa-customer-create]]
+=== Create Customer
+
+==== Request structure
+
+include::{snippets}/jpa-customer-create/http-request.adoc[]
+
+==== Request fields
+
+include::{snippets}/jpa-customer-create/request-fields.adoc[]
+
+==== Response fields
+
+include::{snippets}/jpa-customer-create/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/jpa-customer-create/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/jpa-customer-create/curl-request.adoc[]
+
+[[resource-jpa-customer-get]]
+=== Get Customer
+
+==== Request structure
+
+include::{snippets}/jpa-customer-get/http-request.adoc[]
+
+==== Path parameters
+
+include::{snippets}/jpa-customer-get/path-parameters.adoc[]
+
+==== Response fields
+
+include::{snippets}/jpa-customer-get/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/jpa-customer-get/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/jpa-customer-get/curl-request.adoc[]
+
+[[resource-jpa-customer-list]]
+=== Get all Customers
+
+==== Request structure
+
+include::{snippets}/jpa-customer-list/http-request.adoc[]
+
+==== Request fields
+
+include::{snippets}/jpa-customer-list/request-parameters.adoc[]
+
+==== Response fields
+
+include::{snippets}/jpa-customer-list/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/jpa-customer-list/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/jpa-customer-list/curl-request.adoc[]
+
+[[resource-jpa-customers-by-last-name]]
+=== Get Customers by Last Name
+
+==== Request structure
+
+include::{snippets}/jpa-customers-by-last-name/http-request.adoc[]
+
+==== Path parameters
+
+include::{snippets}/jpa-customers-by-last-name/path-parameters.adoc[]
+
+==== Response fields
+
+include::{snippets}/jpa-customers-by-last-name/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/jpa-customers-by-last-name/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/jpa-customers-by-last-name/curl-request.adoc[]

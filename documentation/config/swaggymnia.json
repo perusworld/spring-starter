@@ -1,0 +1,8 @@
+{
+    "title" : "Sample REST Services",
+    "version" : "0.0.1",
+    "host" : "localhost",
+    "basePath" : "/",
+    "schemes" : "http",
+    "description" : "Sample REST Services"
+  }

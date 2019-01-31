@@ -1,0 +1,148 @@
+{
+  "info": {
+    "name": "Sample REST Service - Postman",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Sample Requests",
+      "item": [
+        {
+          "name": "jpa/customers/",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{oauth2Token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\" : \"firstName1\",\r\n  \"lastName\" : \"lastName1\",\r\n  \"sampleIgnoreInPublic\" : \"sampleIgnoreInPublic1\"\r\n}"
+            },
+            "url": {
+              "raw": "{{host}}/jpa/customers/",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "",
+                "jpa",
+                "customers",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "jpa/customers/4",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{oauth2Token}}"
+              }
+            ],
+            "body": null,
+            "url": {
+              "raw": "{{host}}/jpa/customers/4",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "",
+                "jpa",
+                "customers",
+                "4"
+              ]
+            }
+          }
+        },
+        {
+          "name": "jpa/customers/",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{oauth2Token}}"
+              }
+            ],
+            "body": null,
+            "url": {
+              "raw": "{{host}}/jpa/customers/?page=0&size=2147483647",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "",
+                "jpa",
+                "customers",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "2147483647"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "jpa/customers/search/findAllByLastName/lastName1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{oauth2Token}}"
+              }
+            ],
+            "body": null,
+            "url": {
+              "raw": "{{host}}/jpa/customers/search/findAllByLastName/lastName1",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "",
+                "jpa",
+                "customers",
+                "search",
+                "findAllByLastName",
+                "lastName1"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

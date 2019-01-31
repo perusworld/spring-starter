@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}">
+    <head>
+        <title>Index</title>
+    </head>
+<th:block layout:fragment="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+</th:block>
+<div layout:fragment="page_content" id="page_content">
+    <h3>Home Page</h3>
+    <a th:href="@{/sample-page}">Go to Sample Page</a>
+</div>
+
+</html>

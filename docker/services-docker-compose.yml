@@ -1,0 +1,35 @@
+version: '3'
+services:
+  sample-rest-service:
+    container_name: sample-rest-service
+    build: 
+      context: ../sample-rest-service
+    ports:
+      - "8081:8081"
+      - "9081:9081"
+    environment:
+      DB_URL: jdbc:postgresql://postgresdb:5432/userdb
+      DB_USER: dbuser
+      DB_PWD: dbpwd
+    networks:
+      - frontend      
+      - backend      
+  sample-amqp-service:
+    container_name: sample-amqp-service
+    build: 
+      context: ../sample-amqp-service
+    ports:
+      - "9083:9083"
+    environment:
+      AMQP_SERVER_ADDRESS: rabbitmq
+      AMQP_SERVER_PORT: 5672
+      AMQP_SERVER_USERNAME: guest
+      AMQP_SERVER_PASSWORD: guest
+    networks:
+      - frontend      
+      - backend      
+networks:
+   frontend:
+    driver: bridge
+   backend:
+    driver: bridge

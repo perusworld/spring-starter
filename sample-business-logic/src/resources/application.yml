@@ -1,0 +1,17 @@
+management:
+  server:
+    port: ${MANAGEMENT_PORT:9083}
+spring:
+  rabbitmq:
+    host: ${AMQP_SERVER_ADDRESS:localhost}
+    port: ${AMQP_SERVER_PORT:5672}
+    username: ${AMQP_SERVER_USERNAME:guest}
+    password: ${AMQP_SERVER_PASSWORD:guest}
+sample:
+  amqpservice:
+    topicExchange: amq.topic
+    queue: sample-queue
+    routingKey: sample.routing.key.#
+logging:
+  level:
+    com.yosanai: DEBUG

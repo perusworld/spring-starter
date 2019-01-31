@@ -1,0 +1,46 @@
+server:
+  port: ${PORT:8082}
+  servlet:
+    contextPath: ${CONTEXT_PATH:/}
+management:
+  server:
+    port: ${MANAGEMENT_PORT:8092}
+spring:
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+        type: trace
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/userdb}
+    username: ${DB_USER:dbuser}
+    password: ${DB_PWD:dbpwd}
+    initialization-mode: never
+  rabbitmq:
+    host: ${AMQP_SERVER_ADDRESS:localhost}
+    port: ${AMQP_SERVER_PORT:5672}
+    username: ${AMQP_SERVER_USERNAME:guest}
+    password: ${AMQP_SERVER_PASSWORD:guest}
+sample:
+  restservice:
+    url: ${SAMPLE_REST_SERVICE_URL:http://localhost:8081}
+  amqpservice:
+    topicExchange: amq.topic
+    routingKey: sample.routing.key.#
+security:
+  oauth2:
+    client:
+      clientId: ${FB_APP_ID:-your-fb-app-id-here-}
+      clientSecret: ${FB_APP_SECRET:-your-fb-app-secret-here-}
+      accessTokenUri: https://graph.facebook.com/oauth/access_token
+      userAuthorizationUri: https://www.facebook.com/dialog/oauth
+      tokenName: oauth_token
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://graph.facebook.com/me

@@ -1,0 +1,12 @@
+{
+    "host": {
+      "before": "http://localhost:0",
+      "after": "{{host}}"
+    },
+    "headers": [
+      {
+        "name": "Authorization",
+        "newValue": "Bearer {{oauth2Token}}"
+      }
+    ]
+  }

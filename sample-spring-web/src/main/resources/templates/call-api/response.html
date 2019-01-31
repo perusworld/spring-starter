@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}">
+
+<head>
+    <title>Call API</title>
+</head>
+<th:block layout:fragment="breadcrumb">
+    <li class="breadcrumb-item">
+        <a th:href="@{/}">Home</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Call API</li>
+</th:block>
+<div layout:fragment="page_content" id="page_content">
+    <h3>Call API Response</h3>
+    <p th:text="'Hello, getting data from ' + ${url} + '!'" />
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">String</th>
+            <th scope="col">Integer</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td th:text="${resp.aString}">aString</td>
+            <td th:text="${resp.anInteger}">anInteger</td>
+            <td th:text="${resp.aDate}">aDate</td>
+          </tr>
+        </tbody>
+      </table>
+    <a th:href="@{/}">Go Home</a>
+</div>
+</html>

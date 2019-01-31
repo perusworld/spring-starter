@@ -1,0 +1,60 @@
+version: '3'
+services:
+  rabbitmq:
+    container_name: sample_rabbitmq
+    image: "rabbitmq:management"
+    ports:
+      - "15672:15672"
+      - "4369:4369"
+      - "5671:5671"
+      - "5672:5672"
+      - "25672:25672"
+    networks:
+      - backend      
+  mongodb:
+    container_name: sample_mongodb
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"
+    networks:
+      - backend      
+  postgresdb:
+    container_name: sample_postgresdb
+    image: "postgres:latest"
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - ./db-init/:/docker-entrypoint-initdb.d
+    networks:
+      - backend      
+  pgadmin:
+    container_name: sample_pgadmin
+    image: "dpage/pgadmin4"
+    ports:
+      - "5431:80"
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@db.com
+      PGADMIN_DEFAULT_PASSWORD: pwd
+    depends_on: 
+      - postgresdb
+    networks:
+      - backend      
+  mongoadmin:
+    container_name: sample_mongoadmin
+    image: "mongo-express"
+    ports:
+      - "27016:8081"
+    links:
+      - mongodb:mongo
+    restart: always
+    depends_on: 
+      - mongodb
+    networks:
+      - backend      
+networks:
+   backend:
+    driver: bridge
