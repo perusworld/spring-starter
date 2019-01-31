@@ -1,4 +1,6 @@
 # spring-starter
+[![Build Status](https://travis-ci.org/perusworld/spring-starter.svg?branch=master)](https://travis-ci.org/perusworld/spring-starter)
+
 Spring Starter
 
 ## Development
