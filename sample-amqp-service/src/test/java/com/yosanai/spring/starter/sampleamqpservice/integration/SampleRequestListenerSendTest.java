@@ -12,13 +12,16 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.yosanai.spring.starter.sampleamqpservice.SampleRequestListener;
+import com.yosanai.spring.starter.sampleamqpservice.TestConfig;
 import com.yosanai.spring.starter.sampleapi.SampleRequest;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = { TestConfig.class })
+@ActiveProfiles("test")
 public class SampleRequestListenerSendTest {
 
 	@Autowired
@@ -32,6 +35,9 @@ public class SampleRequestListenerSendTest {
 
 	@Value("${sample.amqpservice.routingKey}")
 	private String routingKey;
+
+	@Autowired
+	private SendSampleRequest sender;
 
 	@Test
 	public void checkInit() {
@@ -50,7 +56,7 @@ public class SampleRequestListenerSendTest {
 	@Test
 	public void checkSend() {
 		SampleRequest request = new SampleRequest(getRndString(), getRndNumber(), new Date());
-		rabbitTemplate.convertAndSend(topicExchange, routingKey.replace("#", "test"), request);
+		sender.send(request);
 		try {
 			listener.getLatch().await(10000, TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
