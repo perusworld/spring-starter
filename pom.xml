@@ -105,5 +105,6 @@
 		<module>sample-amqp-service</module>
 		<module>sample-data</module>
 		<module>sample-api</module>
+		<module>sample-email-service</module>
 	</modules>
 </project>

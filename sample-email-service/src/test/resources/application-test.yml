@@ -1,0 +1,18 @@
+sampleemail:
+  imap: false
+  latch: 4
+  gotmail:
+    pollInterval: 5000
+spring:
+  mail:
+    host: localhost
+    properties:
+      mail:
+        smtp:
+          auth: false
+        starttls:
+          enable: false
+logging:
+  level:
+    com.yosanai: DEBUG
+    org.springframework: WARN
