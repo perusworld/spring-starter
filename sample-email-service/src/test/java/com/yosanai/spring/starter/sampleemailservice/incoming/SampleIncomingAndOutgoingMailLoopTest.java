@@ -29,8 +29,19 @@ public class SampleIncomingAndOutgoingMailLoopTest {
 
 	private String from = "someone@somewhere.com";
 	private String to = "someoneto@someplace.com";
-	private String voucherText = "Voucher 12345\r\n" + "Card Number 1234567890123456\r\n" + "Merchant Id 1223456";
-	private String voucherHTML = "<table><tr><td>Voucher 12345</td></tr><tr><td>Card Number 1234567890123456</td></tr><tr><td>Merchant Id 1223456</td></tr><table>";
+	public static final String SAMPLE_TEXT = "Name Some One\r\n" + "E-Mail someone@somewhere.com\r\n"
+			+ "Account Number 1223456";
+	public static final String SAMPLE_HTML = "<html>\r\n" + "<head>\r\n"
+			+ "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\r\n"
+			+ "    <style type=\"text/css\" style=\"display:none;\">\r\n" + "        P {\r\n"
+			+ "            margin-top: 0;\r\n" + "            margin-bottom: 0;\r\n" + "        }\r\n"
+			+ "    </style>\r\n" + "</head>\r\n" + "<body dir=\"ltr\">\r\n"
+			+ "    <div style=\"color: rgb(0, 0, 0); font-family: Calibri,Helvetica,sans-serif; font-size: 12pt;\">\r\n"
+			+ "        <table>\r\n" + "            <tr>\r\n" + "                <td>Name</td><td>Some One</td>\r\n"
+			+ "            </tr>\r\n" + "            <tr>\r\n"
+			+ "                <td>E-Mail</td><td>someone@somewhere.com</td>\r\n" + "            </tr>\r\n"
+			+ "            <tr>\r\n" + "                <td>Account Number</td><td>1223456</td>\r\n"
+			+ "            </tr>\r\n" + "            <table>\r\n" + "    </div>\r\n" + "</body>\r\n" + "</html>";
 
 	@Autowired
 	@Qualifier("sampleIncomingMailListenerLatch")
@@ -61,10 +72,10 @@ public class SampleIncomingAndOutgoingMailLoopTest {
 	}
 
 	public void sendMails() throws MessagingException {
-		sendMail(voucherText, false, false);
-		sendMail(voucherHTML, false, true);
-		sendMail(voucherText, true, false);
-		sendMail(voucherHTML, true, true);
+		sendMail(SAMPLE_TEXT, false, false);
+		sendMail(SAMPLE_HTML, false, true);
+		sendMail(SAMPLE_TEXT, true, false);
+		sendMail(SAMPLE_HTML, true, true);
 	}
 
 	@Test
