@@ -30,7 +30,7 @@ public class JsonViewTest {
 
 	@Test
 	public void checkSerialization() throws Exception {
-		Customer customer = new Customer(rndStr(), rndStr(), rndStr());
+		Customer customer = new Customer(rndStr(), rndStr(), rndStr(), rndStr());
 		CustomerOrder order = new CustomerOrder(customer);
 		order.addOrderItem(new OrderItem(new Product(rndStr(), rndStr(), rndInt()), rndInt()));
 		order.addOrderItem(new OrderItem(new Product(rndStr(), rndStr(), rndInt()), rndInt()));

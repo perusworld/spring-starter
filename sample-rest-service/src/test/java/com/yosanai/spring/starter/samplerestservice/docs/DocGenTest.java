@@ -57,7 +57,7 @@ public class DocGenTest extends BaseAsciiDocTest {
 					"[].created", "Created timestamp", "[].updated", "Updated timestamp", "[].id", "ID"));
 
 	public Customer someCustomer(int index) {
-		return new Customer("firstName" + index, "lastName" + index, "sampleIgnoreInPublic" + index);
+		return new Customer("firstName" + index, "lastName" + index, "superSecretData" + index, "sampleIgnoreInPublic" + index);
 	}
 
 	@Test

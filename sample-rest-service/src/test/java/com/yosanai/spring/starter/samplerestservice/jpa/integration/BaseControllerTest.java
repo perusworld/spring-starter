@@ -503,7 +503,7 @@ public abstract class BaseControllerTest<C, E> {
 	}
 
 	public Customer someCustomer() {
-		return post(CustomerController.class, new Customer(rndStr(), rndStr(), rndStr()), Customer.class, adminToken);
+		return post(CustomerController.class, new Customer(rndStr(), rndStr(), rndStr(), rndStr()), Customer.class, adminToken);
 	}
 
 	public CustomerOrder someCustomerOrder(Customer customer) {

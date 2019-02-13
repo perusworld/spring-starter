@@ -1,6 +1,6 @@
 package com.yosanai.spring.starter.sampledata;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,12 +73,12 @@ public class BaseTest {
 
 	public void someCustomers(String lastName, int size) {
 		for (int idx = 0; idx < size; idx++) {
-			customerRepository.save(new Customer(rndStr(), lastName, rndStr()));
+			customerRepository.save(new Customer(rndStr(), lastName, rndStr(), rndStr()));
 		}
 	}
 
 	public Customer someCustomer() {
-		return customerRepository.save(new Customer(rndStr(), rndStr(), rndStr()));
+		return customerRepository.save(new Customer(rndStr(), rndStr(), rndStr(), rndStr()));
 	}
 
 	public List<Product> someProducts(int size) {

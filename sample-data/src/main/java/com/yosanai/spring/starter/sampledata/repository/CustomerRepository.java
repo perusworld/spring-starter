@@ -2,6 +2,7 @@ package com.yosanai.spring.starter.sampledata.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.data.querydsl.binding.QuerydslBindings;
@@ -24,5 +25,8 @@ public interface CustomerRepository extends PagingAndSortingRepository<Customer,
 	}
 
 	public List<Customer> findAllByLastName(@Param("lastName") String lastName);
+
+	@Query("SELECT c.superSecretData FROM Customer c WHERE c.id = :id")
+	public String getSuperSecretDataById(@Param("id") Long id);
 
 }

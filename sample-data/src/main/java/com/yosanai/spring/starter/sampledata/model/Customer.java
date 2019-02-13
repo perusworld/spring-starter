@@ -3,6 +3,7 @@ package com.yosanai.spring.starter.sampledata.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.yosanai.spring.starter.sampledata.Views;
+import com.yosanai.spring.starter.sampledata.crypto.StringCryptoConverter;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -48,6 +50,13 @@ public class Customer extends Auditable {
 	 * Last name
 	 */
 	private String lastName;
+
+	/**
+	 * Some data the you want to store encrypted
+	 */
+	@Convert(converter = StringCryptoConverter.class)
+	private String superSecretData;
+
 	/**
 	 * Sample field that will be included only with internal view
 	 */
@@ -75,10 +84,11 @@ public class Customer extends Auditable {
 		order.setCustomer(null);
 	}
 
-	public Customer(String firstName, String lastName, String sampleIgnoreInPublic) {
+	public Customer(String firstName, String lastName, String superSecretData, String sampleIgnoreInPublic) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.superSecretData = superSecretData;
 		this.sampleIgnoreInPublic = sampleIgnoreInPublic;
 	}
 
@@ -86,7 +96,5 @@ public class Customer extends Auditable {
 		super();
 		this.id = id;
 	}
-	
-	
-	
+
 }

@@ -23,7 +23,7 @@ public class CustomerControllerTest extends BaseControllerTest<CustomerControlle
 
 	@Test
 	public void testCreateCustomer() throws Exception {
-		Customer customer = new Customer(rndStr(), rndStr(), rndStr());
+		Customer customer = new Customer(rndStr(), rndStr(), rndStr(), rndStr());
 		Customer savedCustomer = create(customer);
 		assertNotNull(savedCustomer);
 		assertNotNull(customer.getSampleIgnoreInPublic());
@@ -42,7 +42,7 @@ public class CustomerControllerTest extends BaseControllerTest<CustomerControlle
 	public void testFindAll() throws Exception {
 		Map<Long, Customer> customerMap = new HashMap<>();
 		for (int idx = 0; idx < INSERT_SIZE; idx++) {
-			Customer customer = create(new Customer(rndStr(), rndStr(), rndStr()));
+			Customer customer = create(new Customer(rndStr(), rndStr(), rndStr(), rndStr()));
 			customerMap.put(customer.getId(), customer);
 		}
 		List<Customer> saved = list();
@@ -61,7 +61,7 @@ public class CustomerControllerTest extends BaseControllerTest<CustomerControlle
 		String lastName = rndStr();
 		Map<Long, Customer> customerMap = new HashMap<>();
 		for (int idx = 0; idx < INSERT_SIZE; idx++) {
-			Customer customer = create(new Customer(rndStr(), lastName, rndStr()));
+			Customer customer = create(new Customer(rndStr(), lastName, rndStr(), rndStr()));
 			customerMap.put(customer.getId(), customer);
 		}
 		List<Customer> saved = findAllBy(user, "search", "findAllByLastName", lastName);
