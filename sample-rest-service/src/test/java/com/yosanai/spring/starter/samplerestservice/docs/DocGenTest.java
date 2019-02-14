@@ -31,9 +31,9 @@ import com.yosanai.spring.starter.samplerestservice.controller.CustomerControlle
 @DirtiesContext
 public class DocGenTest extends BaseAsciiDocTest {
 
-	private RequestFieldsSnippet customerRequestFieldDescriptors = requestFields(
-			fieldDescriptorsFor("firstName", "Customer's first name", "lastName", "Customer's last name",
-					"sampleIgnoreInPublic", "Some data that will be ignored while in public view"));
+	private RequestFieldsSnippet customerRequestFieldDescriptors = requestFields(fieldDescriptorsFor("firstName",
+			"Customer's first name", "lastName", "Customer's last name", "superSecretData", "Some secret data",
+			"sampleIgnoreInPublic", "Some data that will be ignored while in public view"));
 
 	private Snippet getPathParameters = pathParameters("id", "Customer ID to get");
 
@@ -42,22 +42,24 @@ public class DocGenTest extends BaseAsciiDocTest {
 	private Snippet pageRequestParameters = requestParameters(PAGE, "Page number to get", SIZE,
 			"Number of results per page");
 
-	private ResponseFieldsSnippet customerResponseFieldDescriptors = responseFields(
-			fieldDescriptorsFor("firstName", "Customer's first name", "lastName", "Customer's last name", "created",
-					"Created timestamp", "updated", "Updated timestamp", "id", "ID"));
+	private ResponseFieldsSnippet customerResponseFieldDescriptors = responseFields(fieldDescriptorsFor("firstName",
+			"Customer's first name", "lastName", "Customer's last name", "superSecretData", "Some secret data",
+			"created", "Created timestamp", "updated", "Updated timestamp", "id", "ID"));
 
-	private ResponseFieldsSnippet customerPagedResponseFieldDescriptors = responseFields(fieldDescriptorsFor("list[]",
-			"List of customers", "list[].firstName", "Customer's first name", "list[].lastName", "Customer's last name",
-			"list[].created", "Created timestamp", "list[].updated", "Updated timestamp", "list[].id", "ID",
-			"currentPage", "Current page number", "totalPages", "Total number of pages", "totalSize",
-			"Number of results", "first", "Is it first page", "last", "Is it last page"));
+	private ResponseFieldsSnippet customerPagedResponseFieldDescriptors = responseFields(
+			fieldDescriptorsFor("list[]", "List of customers", "list[].firstName", "Customer's first name",
+					"list[].lastName", "Customer's last name", "list[].superSecretData", "Some secret data",
+					"list[].created", "Created timestamp", "list[].updated", "Updated timestamp", "list[].id", "ID",
+					"currentPage", "Current page number", "totalPages", "Total number of pages", "totalSize",
+					"Number of results", "first", "Is it first page", "last", "Is it last page"));
 
-	private ResponseFieldsSnippet customerResponseArrayFieldDescriptors = responseFields(
-			fieldDescriptorsFor("[].firstName", "Customer's first name", "[].lastName", "Customer's last name",
-					"[].created", "Created timestamp", "[].updated", "Updated timestamp", "[].id", "ID"));
+	private ResponseFieldsSnippet customerResponseArrayFieldDescriptors = responseFields(fieldDescriptorsFor(
+			"[].firstName", "Customer's first name", "[].lastName", "Customer's last name", "[].superSecretData",
+			"Some secret data", "[].created", "Created timestamp", "[].updated", "Updated timestamp", "[].id", "ID"));
 
 	public Customer someCustomer(int index) {
-		return new Customer("firstName" + index, "lastName" + index, "superSecretData" + index, "sampleIgnoreInPublic" + index);
+		return new Customer("firstName" + index, "lastName" + index, "superSecretData" + index,
+				"sampleIgnoreInPublic" + index);
 	}
 
 	@Test
