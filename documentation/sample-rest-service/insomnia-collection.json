@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 3,
-  "__export_date": "2019-01-31T01:14:52.108Z",
+  "__export_date": "2019-02-14T00:54:24.634Z",
   "__export_source": "restdocs-to-postman:v2.0.1",
   "resources": [
     {
@@ -17,7 +17,7 @@
       "url": "{{host}}/jpa/customers/",
       "body": {
         "mimeType": "application/json",
-        "text": "{\r\n  \"firstName\" : \"firstName1\",\r\n  \"lastName\" : \"lastName1\",\r\n  \"sampleIgnoreInPublic\" : \"sampleIgnoreInPublic1\"\r\n}"
+        "text": "{\r\n  \"firstName\" : \"firstName1\",\r\n  \"lastName\" : \"lastName1\",\r\n  \"superSecretData\" : \"superSecretData1\",\r\n  \"sampleIgnoreInPublic\" : \"sampleIgnoreInPublic1\"\r\n}"
       },
       "method": "POST",
       "parameters": [],

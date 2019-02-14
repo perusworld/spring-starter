@@ -27,7 +27,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"firstName\" : \"firstName1\",\r\n  \"lastName\" : \"lastName1\",\r\n  \"sampleIgnoreInPublic\" : \"sampleIgnoreInPublic1\"\r\n}"
+              "raw": "{\r\n  \"firstName\" : \"firstName1\",\r\n  \"lastName\" : \"lastName1\",\r\n  \"superSecretData\" : \"superSecretData1\",\r\n  \"sampleIgnoreInPublic\" : \"sampleIgnoreInPublic1\"\r\n}"
             },
             "url": {
               "raw": "{{host}}/jpa/customers/",

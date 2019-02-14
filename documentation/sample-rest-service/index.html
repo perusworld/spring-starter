@@ -523,7 +523,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="details">
 <span id="author" class="author">Sample REST Service Documentation</span><br>
 <span id="revnumber">version 0.0.1,</span>
-<span id="revdate">2019-01-31</span>
+<span id="revdate">2019-02-14</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -564,13 +564,14 @@ table.CodeRay td.code>pre{padding:0}
 <pre class="CodeRay highlight nowrap"><code data-lang="http">POST /jpa/customers/ HTTP/1.1
 Accept: application/json
 Host: localhost:0
-Content-Length: 116
+Content-Length: 159
 Content-Type: application/json
 Authorization: Bearer oauth-2-token-from-auth-service
 
 {
   &quot;firstName&quot; : &quot;firstName1&quot;,
   &quot;lastName&quot; : &quot;lastName1&quot;,
+  &quot;superSecretData&quot; : &quot;superSecretData1&quot;,
   &quot;sampleIgnoreInPublic&quot; : &quot;sampleIgnoreInPublic1&quot;
 }</code></pre>
 </div>
@@ -601,6 +602,11 @@ Authorization: Bearer oauth-2-token-from-auth-service
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lastName</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Customer&#8217;s last name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>superSecretData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some secret data</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sampleIgnoreInPublic</code></p></td>
@@ -637,6 +643,11 @@ Authorization: Bearer oauth-2-token-from-auth-service
 <td class="tableblock halign-left valign-top"><p class="tableblock">Customer&#8217;s last name</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>superSecretData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some secret data</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>created</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Created timestamp</p></td>
@@ -659,15 +670,16 @@ Authorization: Bearer oauth-2-token-from-auth-service
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
-Content-Length: 170
 Content-Type: application/json;charset=UTF-8
+Content-Length: 213
 
 {
-  &quot;created&quot; : &quot;2019-01-31T00:59:44.913+0000&quot;,
-  &quot;updated&quot; : &quot;2019-01-31T00:59:44.913+0000&quot;,
+  &quot;created&quot; : &quot;2019-02-14T00:46:39.331+0000&quot;,
+  &quot;updated&quot; : &quot;2019-02-14T00:46:39.331+0000&quot;,
   &quot;id&quot; : 5,
   &quot;firstName&quot; : &quot;firstName1&quot;,
-  &quot;lastName&quot; : &quot;lastName1&quot;
+  &quot;lastName&quot; : &quot;lastName1&quot;,
+  &quot;superSecretData&quot; : &quot;superSecretData1&quot;
 }</code></pre>
 </div>
 </div>
@@ -683,6 +695,7 @@ Content-Type: application/json;charset=UTF-8
     -d '{
   &quot;firstName&quot; : &quot;firstName1&quot;,
   &quot;lastName&quot; : &quot;lastName1&quot;,
+  &quot;superSecretData&quot; : &quot;superSecretData1&quot;,
   &quot;sampleIgnoreInPublic&quot; : &quot;sampleIgnoreInPublic1&quot;
 }'</code></pre>
 </div>
@@ -751,6 +764,11 @@ Authorization: Bearer oauth-2-token-from-auth-service</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Customer&#8217;s last name</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>superSecretData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some secret data</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>created</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Created timestamp</p></td>
@@ -773,15 +791,16 @@ Authorization: Bearer oauth-2-token-from-auth-service</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
-Content-Length: 170
 Content-Type: application/json;charset=UTF-8
+Content-Length: 213
 
 {
-  &quot;created&quot; : &quot;2019-01-31T00:59:44.823+0000&quot;,
-  &quot;updated&quot; : &quot;2019-01-31T00:59:44.823+0000&quot;,
+  &quot;created&quot; : &quot;2019-02-14T00:46:39.230+0000&quot;,
+  &quot;updated&quot; : &quot;2019-02-14T00:46:39.230+0000&quot;,
   &quot;id&quot; : 4,
   &quot;firstName&quot; : &quot;firstName1&quot;,
-  &quot;lastName&quot; : &quot;lastName1&quot;
+  &quot;lastName&quot; : &quot;lastName1&quot;,
+  &quot;superSecretData&quot; : &quot;superSecretData1&quot;
 }</code></pre>
 </div>
 </div>
@@ -867,6 +886,11 @@ Authorization: Bearer oauth-2-token-from-auth-service</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Customer&#8217;s last name</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list[].superSecretData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some secret data</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>list[].created</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Created timestamp</p></td>
@@ -914,7 +938,7 @@ Authorization: Bearer oauth-2-token-from-auth-service</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
-Content-Length: 671
+Content-Length: 806
 Content-Type: application/json;charset=UTF-8
 
 {
@@ -924,23 +948,26 @@ Content-Type: application/json;charset=UTF-8
   &quot;first&quot; : true,
   &quot;last&quot; : true,
   &quot;list&quot; : [ {
-    &quot;created&quot; : &quot;2019-01-31T00:59:44.477+0000&quot;,
-    &quot;updated&quot; : &quot;2019-01-31T00:59:44.477+0000&quot;,
+    &quot;created&quot; : &quot;2019-02-14T00:46:38.703+0000&quot;,
+    &quot;updated&quot; : &quot;2019-02-14T00:46:38.703+0000&quot;,
     &quot;id&quot; : 1,
     &quot;firstName&quot; : &quot;firstName0&quot;,
-    &quot;lastName&quot; : &quot;lastName0&quot;
+    &quot;lastName&quot; : &quot;lastName0&quot;,
+    &quot;superSecretData&quot; : &quot;superSecretData0&quot;
   }, {
-    &quot;created&quot; : &quot;2019-01-31T00:59:44.547+0000&quot;,
-    &quot;updated&quot; : &quot;2019-01-31T00:59:44.547+0000&quot;,
+    &quot;created&quot; : &quot;2019-02-14T00:46:38.788+0000&quot;,
+    &quot;updated&quot; : &quot;2019-02-14T00:46:38.788+0000&quot;,
     &quot;id&quot; : 2,
     &quot;firstName&quot; : &quot;firstName1&quot;,
-    &quot;lastName&quot; : &quot;lastName1&quot;
+    &quot;lastName&quot; : &quot;lastName1&quot;,
+    &quot;superSecretData&quot; : &quot;superSecretData1&quot;
   }, {
-    &quot;created&quot; : &quot;2019-01-31T00:59:44.554+0000&quot;,
-    &quot;updated&quot; : &quot;2019-01-31T00:59:44.554+0000&quot;,
+    &quot;created&quot; : &quot;2019-02-14T00:46:38.796+0000&quot;,
+    &quot;updated&quot; : &quot;2019-02-14T00:46:38.796+0000&quot;,
     &quot;id&quot; : 3,
     &quot;firstName&quot; : &quot;firstName2&quot;,
-    &quot;lastName&quot; : &quot;lastName2&quot;
+    &quot;lastName&quot; : &quot;lastName2&quot;,
+    &quot;superSecretData&quot; : &quot;superSecretData2&quot;
   } ]
 }</code></pre>
 </div>
@@ -1019,6 +1046,11 @@ Authorization: Bearer oauth-2-token-from-auth-service</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Customer&#8217;s last name</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].superSecretData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some secret data</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].created</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Created timestamp</p></td>
@@ -1041,15 +1073,16 @@ Authorization: Bearer oauth-2-token-from-auth-service</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="http">HTTP/1.1 200 OK
-Content-Length: 174
 Content-Type: application/json;charset=UTF-8
+Content-Length: 217
 
 [ {
-  &quot;created&quot; : &quot;2019-01-31T00:59:44.973+0000&quot;,
-  &quot;updated&quot; : &quot;2019-01-31T00:59:44.973+0000&quot;,
+  &quot;created&quot; : &quot;2019-02-14T00:46:39.436+0000&quot;,
+  &quot;updated&quot; : &quot;2019-02-14T00:46:39.436+0000&quot;,
   &quot;id&quot; : 6,
   &quot;firstName&quot; : &quot;firstName1&quot;,
-  &quot;lastName&quot; : &quot;lastName1&quot;
+  &quot;lastName&quot; : &quot;lastName1&quot;,
+  &quot;superSecretData&quot; : &quot;superSecretData1&quot;
 } ]</code></pre>
 </div>
 </div>
