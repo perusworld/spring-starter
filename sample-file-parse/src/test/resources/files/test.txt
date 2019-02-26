@@ -1,0 +1,9 @@
+01 01012011
+02 Development         
+03 Joe        Smith      Developer  0007500000 10012009
+03 Jane       Doe        Architect  0008000000 01152008
+04 00002
+02 Product Management  
+03 Jon        Anderson   Manager    0008500000 03182007
+04 00001
+05 00002

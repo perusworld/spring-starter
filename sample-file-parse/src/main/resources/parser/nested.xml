@@ -1,0 +1,55 @@
+<beanio xmlns="http://www.beanio.org/2012/03"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.beanio.org/2012/03 http://www.beanio.org/2012/03/mapping.xsd">
+
+
+	<stream name="outgoingFile" format="fixedlength">
+		<typeHandler name="amountTypeHandler"
+			class="com.yosanai.spring.starter.samplefileparse.typehandler.AmountTypeHandler" />
+		<record name="header" order="1" minOccurs="1" maxOccurs="1"
+			class="com.yosanai.spring.starter.samplefileparse.model.Header">
+			<field name="recordType" rid="true" literal="01" length="2" />
+			<field name="spacer" length="1" ignore="true" />
+			<field name="creationDate" format="MMddyyyy" length="8" />
+		</record>
+		<group name="departmentGroup" order="2" minOccurs="0"
+			maxOccurs="unbounded"
+			class="com.yosanai.spring.starter.samplefileparse.model.Department">
+			<record name="header" order="1" minOccurs="1" maxOccurs="1"
+				class="com.yosanai.spring.starter.samplefileparse.model.DepartmentHeader">
+				<field name="recordType" rid="true" literal="02" />
+				<field name="spacer" length="1" ignore="true" />
+				<field name="name" length="20" />
+			</record>
+			<record name="employees" order="2" minOccurs="1"
+				maxOccurs="unbounded" collection="list"
+				class="com.yosanai.spring.starter.samplefileparse.model.Employee">
+				<field name="recordType" rid="true" literal="03" />
+				<field name="spacer" length="1" ignore="true" />
+				<field name="firstName" length="10" />
+				<field name="spacer" length="1" ignore="true" />
+				<field name="lastName" length="10" />
+				<field name="spacer" length="1" ignore="true" />
+				<field name="role" length="10" />
+				<field name="spacer" length="1" ignore="true" />
+				<field name="salary" length="10" padding="0" justify="right"
+					typeHandler="amountTypeHandler" />
+				<field name="spacer" length="1" ignore="true" />
+				<field name="hireDate" format="MMddyyyy" length="8" />
+			</record>
+			<record name="trailer" order="3" minOccurs="1" maxOccurs="1"
+				class="com.yosanai.spring.starter.samplefileparse.model.DepartmentTrailer">
+				<field name="recordType" rid="true" literal="04" />
+				<field name="spacer" length="1" ignore="true" />
+				<field name="lineCount" length="5" padding="0" justify="right" />
+			</record>
+		</group>
+		<record name="trailer" order="4" minOccurs="1" maxOccurs="1"
+			class="com.yosanai.spring.starter.samplefileparse.model.Trailer">
+			<field name="recordType" rid="true" literal="05" length="2" />
+			<field name="spacer" length="1" ignore="true" />
+			<field name="lineCount" length="5" padding="0" justify="right" />
+		</record>
+	</stream>
+
+</beanio>

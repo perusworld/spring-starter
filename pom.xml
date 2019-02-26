@@ -52,6 +52,11 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
@@ -107,5 +112,6 @@
 		<module>sample-api</module>
 		<module>sample-email-service</module>
 		<module>sample-sftp-service</module>
+		<module>sample-file-parse</module>
 	</modules>
 </project>
