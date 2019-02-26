@@ -106,5 +106,6 @@
 		<module>sample-data</module>
 		<module>sample-api</module>
 		<module>sample-email-service</module>
+		<module>sample-sftp-service</module>
 	</modules>
 </project>

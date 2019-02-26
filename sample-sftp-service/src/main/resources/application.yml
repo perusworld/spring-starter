@@ -1,0 +1,23 @@
+samplesftp:
+  remote:
+    host: localhost
+    port: 0
+    user: user
+    password: password
+    allowUnknowKeys: true
+    testSession: true
+    deleteRemoteFiles: false
+    directory: sftp-test
+    filePattern: "*.txt"
+    privateKey: ${REMOTE_PRIVATE_KEY:}
+  local:
+    directory: sftp-inbound
+    autoCreateDirectory: true
+  inbound:
+    pollInterval: 5000
+    initialDelay: 5000
+    maxFetchSize: 1
+  latch: 0
+logging:
+  level:
+    com.yosanai: DEBUG

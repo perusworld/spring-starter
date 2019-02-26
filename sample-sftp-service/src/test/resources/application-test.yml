@@ -1,0 +1,13 @@
+samplesftp:
+  latch: 1
+  server:
+    publicKeyFile: META-INF/keys/sftp_rsa.pub
+  local:
+    directory: ${java.io.tmpdir}/sftp-inbound
+  remote:
+    privateKey: classpath:META-INF/keys/sftp_rsa
+logging:
+  level:
+    com.yosanai: DEBUG
+    org.springframework: WARN
+    org.springframework.integration.sftp: DEBUG
