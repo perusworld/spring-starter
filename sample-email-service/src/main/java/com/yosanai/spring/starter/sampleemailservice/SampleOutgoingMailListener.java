@@ -43,8 +43,4 @@ public class SampleOutgoingMailListener {
 		return ret;
 	}
 
-	public CountDownLatch getLatch() {
-		return latch;
-	}
-
 }

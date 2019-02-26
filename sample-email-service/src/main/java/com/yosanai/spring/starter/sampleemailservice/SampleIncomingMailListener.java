@@ -34,8 +34,4 @@ public class SampleIncomingMailListener {
 		gotMail.process(new IncomingMail(plain, html, from, to, subject));
 	}
 
-	public CountDownLatch getLatch() {
-		return latch;
-	}
-
 }
