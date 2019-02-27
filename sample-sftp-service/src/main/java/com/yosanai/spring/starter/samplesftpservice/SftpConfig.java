@@ -15,8 +15,12 @@ import org.springframework.integration.annotation.Poller;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.file.filters.AcceptOnceFileListFilter;
+import org.springframework.integration.file.filters.CompositeFileListFilter;
+import org.springframework.integration.file.filters.FileListFilter;
 import org.springframework.integration.file.remote.session.CachingSessionFactory;
 import org.springframework.integration.file.remote.session.SessionFactory;
+import org.springframework.integration.metadata.SimpleMetadataStore;
+import org.springframework.integration.sftp.filters.SftpPersistentAcceptOnceFileListFilter;
 import org.springframework.integration.sftp.filters.SftpSimplePatternFileListFilter;
 import org.springframework.integration.sftp.inbound.SftpInboundFileSynchronizer;
 import org.springframework.integration.sftp.inbound.SftpInboundFileSynchronizingMessageSource;
@@ -84,12 +88,21 @@ public class SftpConfig {
 
 	@Bean
 	public SftpInboundFileSynchronizer sftpInboundFileSynchronizer(
-			@Autowired @Qualifier("sftpSessionFactory") SessionFactory<LsEntry> sessionFactory) {
+			@Autowired @Qualifier("sftpSessionFactory") SessionFactory<LsEntry> sessionFactory,
+			@Autowired @Qualifier("inboundFileFilter") FileListFilter<LsEntry> inboundFileFilter) {
 		SftpInboundFileSynchronizer fileSynchronizer = new SftpInboundFileSynchronizer(sessionFactory);
 		fileSynchronizer.setDeleteRemoteFiles(deleteRemoteFiles);
 		fileSynchronizer.setRemoteDirectory(remoteDirectory);
-		fileSynchronizer.setFilter(new SftpSimplePatternFileListFilter(filePattern));
+		fileSynchronizer.setFilter(inboundFileFilter);
 		return fileSynchronizer;
+	}
+
+	@Bean
+	public FileListFilter<LsEntry> inboundFileFilter() {
+		CompositeFileListFilter<LsEntry> ret = new CompositeFileListFilter<>();
+		ret.addFilter(new SftpSimplePatternFileListFilter(filePattern));
+		ret.addFilter(new SftpPersistentAcceptOnceFileListFilter(new SimpleMetadataStore(), "prefix"));
+		return ret;
 	}
 
 	@Bean
