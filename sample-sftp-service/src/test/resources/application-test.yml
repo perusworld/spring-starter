@@ -1,5 +1,5 @@
 samplesftp:
-  latch: 1
+  latch: 2
   server:
     publicKeyFile: META-INF/keys/sftp_rsa.pub
   local:
