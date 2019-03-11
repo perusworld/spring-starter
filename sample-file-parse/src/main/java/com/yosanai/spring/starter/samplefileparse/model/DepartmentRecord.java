@@ -13,10 +13,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class BuyerRecord {
+public class DepartmentRecord {
 
 	DepartmentHeader header;
-	List<Department> merchantRecords;
+	List<Department> departments;
 	DepartmentTrailer trailer;
 
 }
