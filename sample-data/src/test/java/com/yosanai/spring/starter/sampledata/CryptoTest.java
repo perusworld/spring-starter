@@ -8,8 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.persistence.EntityManager;
-
 import org.hibernate.Session;
 import org.hibernate.jdbc.Work;
 import org.junit.Before;
@@ -18,11 +16,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Base64Utils;
 
 import com.yosanai.spring.starter.sampledata.model.Customer;
+import com.yosanai.spring.starter.sampledata.repository.CustomerRepository;
 
 public class CryptoTest extends BaseTest {
 
 	@Autowired
-	EntityManager manager;
+	CustomerRepository customerRepository;
 
 	@Before
 	public void init() {
@@ -35,13 +34,13 @@ public class CryptoTest extends BaseTest {
 
 	@Test
 	public void checkCrypto() {
-		Customer savedCustomer = someCustomer();
+		Customer savedCustomer = randomDataGenerator.someCustomer();
 		assertNotNull(savedCustomer);
 		assertTrue(null != savedCustomer.getId());
 		assertTrue(null != savedCustomer.getSampleIgnoreInPublic());
 		String secretData = customerRepository.getSuperSecretDataById(savedCustomer.getId());
 		assertEquals(savedCustomer.getSuperSecretData(), secretData);
-		Session session = manager.unwrap(Session.class);
+		Session session = entityManager.unwrap(Session.class);
 		session.doWork(new Work() {
 
 			@Override

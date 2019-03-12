@@ -7,16 +7,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.yosanai.spring.starter.sampledata.model.Customer;
 import com.yosanai.spring.starter.sampledata.model.CustomerOrder;
 import com.yosanai.spring.starter.sampledata.model.Product;
 import com.yosanai.spring.starter.sampledata.projection.OrderSummary;
+import com.yosanai.spring.starter.sampledata.repository.CustomerOrderRepository;
 
 import lombok.extern.java.Log;
 
 @Log
 public class CustomerOrderTest extends BaseTest {
+
+	@Autowired
+	CustomerOrderRepository customerOrderRepository;
+
 	@Before
 	public void init() {
 	}
@@ -28,16 +34,16 @@ public class CustomerOrderTest extends BaseTest {
 
 	@Test
 	public void checkInsert() {
-		Customer savedCustomer = someCustomer();
-		CustomerOrder savedOrder = someCustomerOrder(savedCustomer);
+		Customer savedCustomer = randomDataGenerator.someCustomer();
+		CustomerOrder savedOrder = randomDataGenerator.someCustomerOrder(savedCustomer);
 		assertNotNull(savedOrder);
 		assertTrue(null != savedOrder.getId());
 	}
 
 	@Test
 	public void checkInsertWithItems() {
-		Customer savedCustomer = someCustomer();
-		someCustomerOrdersWithItems(savedCustomer, BATCH_SIZE, (products, orders) -> {
+		Customer savedCustomer = randomDataGenerator.someCustomer();
+		randomDataGenerator.someCustomerOrdersWithItems(savedCustomer, BATCH_SIZE, (products, orders) -> {
 			assertNotNull(orders);
 			assertEquals(BATCH_SIZE, orders.size());
 			flush();
@@ -57,8 +63,8 @@ public class CustomerOrderTest extends BaseTest {
 
 	@Test
 	public void checkInsertUpdateWithItems() {
-		Customer savedCustomer = someCustomer();
-		someCustomerOrdersWithItems(savedCustomer, BATCH_SIZE, (products, orders) -> {
+		Customer savedCustomer = randomDataGenerator.someCustomer();
+		randomDataGenerator.someCustomerOrdersWithItems(savedCustomer, BATCH_SIZE, (products, orders) -> {
 			assertNotNull(orders);
 			assertEquals(BATCH_SIZE, orders.size());
 			flush();
@@ -74,9 +80,9 @@ public class CustomerOrderTest extends BaseTest {
 				assertEquals(order.getTotalCost(), total.get());
 			});
 			orders.forEach(order -> {
-				Product product = someProduct();
-				order.addOrderItem(someOrderItem(product));
-				customerOrderRepository.save(order);
+				Product product = randomDataGenerator.someProduct();
+				order.addOrderItem(randomDataGenerator.someOrderItem(product));
+				randomDataGenerator.customerOrderRepository.save(order);
 			});
 			flush();
 			savedOrders = customerOrderRepository.findAllByCustomer(savedCustomer);
@@ -95,8 +101,8 @@ public class CustomerOrderTest extends BaseTest {
 
 	@Test
 	public void checkOrderSummary() {
-		Customer savedCustomer = someCustomer();
-		someCustomerOrdersWithItems(savedCustomer, BATCH_SIZE, (products, orders) -> {
+		Customer savedCustomer = randomDataGenerator.someCustomer();
+		randomDataGenerator.someCustomerOrdersWithItems(savedCustomer, BATCH_SIZE, (products, orders) -> {
 			assertNotNull(orders);
 			assertEquals(BATCH_SIZE, orders.size());
 			flush();
