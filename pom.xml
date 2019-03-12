@@ -113,5 +113,6 @@
 		<module>sample-email-service</module>
 		<module>sample-sftp-service</module>
 		<module>sample-file-parse</module>
+		<module>sample-batch</module>
 	</modules>
 </project>

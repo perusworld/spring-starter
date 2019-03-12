@@ -1,0 +1,26 @@
+samplebatch:
+  latch: 1
+  step:
+    output:
+      path: output
+      fileName: exported-%1$tm%1$td%1$tY-%2$04d.csv
+  cronExpression: 0/10 * * * * ?
+spring:
+  batch:
+    job:
+      enabled: false
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+        type: trace
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/userdb}
+    username: ${DB_USER:dbuser}
+    password: ${DB_PWD:dbpwd}
+    initialization-mode: never
