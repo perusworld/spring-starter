@@ -29,7 +29,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(exclude = { "customer" })
 @Entity
 @JsonView(Views.Public.class)
 /**
