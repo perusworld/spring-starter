@@ -13,7 +13,7 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.yosanai" })
+@ComponentScan(basePackages = { "com.yosanai.spring.starter.samplespringweb" })
 @EnableOAuth2Sso
 public class SampleSpringWebApplication extends WebSecurityConfigurerAdapter {
 
