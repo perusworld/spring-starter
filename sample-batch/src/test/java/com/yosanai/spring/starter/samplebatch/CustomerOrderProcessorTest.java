@@ -51,7 +51,9 @@ public class CustomerOrderProcessorTest {
 
 	@Before
 	public void before() throws IOException {
-		FileUtils.cleanDirectory(new File(pathGenerator.getNextPath(1)).getParentFile());
+		File parentDir = new File(pathGenerator.getNextPath(1)).getParentFile();
+		parentDir.mkdirs();
+		FileUtils.cleanDirectory(parentDir);
 	}
 
 	@Test
